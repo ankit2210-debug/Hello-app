@@ -1,0 +1,41 @@
+apt-get install docker
+docker pull ubuntu:16.04
+docker images
+docker container create -t -i -p 4000:80 -p 2222:22 2a697363a870
+docker ps -a
+docker start 840e41e536e1
+docker exec -t -i 840e41e536e1 bash
+
+
+
+apt-get update && apt-get upgrade
+apt-get install vim net-tools apache2 mysql-server
+service apache2 start
+/etc/init.d/mysql start
+apt-get install python-software-properties
+apt-get install software-properties-common
+add-apt-repository ppa:ondrej/php
+apt-get update
+apt-get install php5.6
+php -v
+apt-get install phpmyadmin
+service apache2 restart
+apt-get install php5.6-mbstring php5.6-mysql
+/etc/init.d/apache2 restart
+apt-get update
+apt-get install openssh-server
+/etc/init.d/ssh start
+vim /etc/ssh/sshd_config
+
+	Match group sftp
+	ChrootDirectory /home
+	X11Forwarding no
+	AllowTcpForwarding no
+	ForceCommand internal-sftp
+
+/etc/init.d/ssh restart
+groupadd sftp
+useradd -m sftpuser -g sftp
+passwd sftpuser
+chmod 700 /home/sftpuser/
+
